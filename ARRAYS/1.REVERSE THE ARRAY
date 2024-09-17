@@ -1,0 +1,103 @@
+Reversing an array means changing the position of each number in the array to its corresponding position from the end
+Input: original_array[] = {1, 2, 3} Output: array_reversed[] = {3, 2, 1}
+
+Input: original_array[] = {4, 5, 1, 2}
+Output: array_reversed[] = {2, 1, 5, 4}
+1. Array Reverse Using an Extra Array
+def reverse_array_extra_array(arr):
+    reversed_arr = arr[::-1]
+
+    # Print reversed array
+    print("Reversed Array:", end=" ")
+    for i in reversed_arr:
+        print(i, end=" ")
+
+# Example usage:
+original_arr = [1, 2, 3, 4, 5]
+reverse_array_extra_array(original_arr)
+Time Complexity: O(n) --Copying elements to a new array is a linear operation.
+Auxiliary Space Complexity: O(n)--Additional space is used to store the new array.
+2. Array Reverse Using a Loop (In-place):
+Iterate through the array using two pointers (start and end).
+Swap elements at the start and end pointers.
+Move the start pointer towards the end and the end pointer towards the start until they meet or cross each other.
+def reverseList(A, start, end):
+    while start < end:
+        A[start], A[end] = A[end], A[start]
+        start += 1
+        end -= 1
+
+
+# Driver function to test above function
+A = [1, 2, 3, 4, 5, 6]
+print(A)
+reverseList(A, 0, 5)
+print("Reversed list is")
+print(A)
+Time Complexity: O(n)
+The loop runs through half of the array, so it’s linear with respect to the array size.
+Auxiliary Space Complexity: O(1)
+In-place reversal, meaning it doesn’t use additional space.
+
+3.Array Reverse Inbuilt Methods:
+Use inbuilt methods like reverse in Python or Array
+
+original_array = [1, 2, 3, 4, 5]
+
+# Using inbuilt method in Python
+reversed_array = list(reversed(original_array))
+
+# Print the reversed array
+print(reversed_array)
+
+Time Complexity: O(n) The reverse method typically has linear time complexity.
+Auxiliary Space Complexity: O(1)
+Additional space is not used to store the reversed array, as the in-built array method “reverse()” swaps the values in a given range in in-place fashion.
+
+ Array Reverse Recursion:
+Define a recursive function that takes an array as input.
+Swap the first and last elements.
+Recursively call the function with the remaining subarray.
+
+def reverseList(A, start, end):
+    if start >= end:
+        return
+    A[start], A[end] = A[end], A[start]
+    reverseList(A, start+1, end-1)
+
+
+# Driver function to test above function
+A = [1, 2, 3, 4, 5, 6]
+print(A)
+reverseList(A, 0, 5)
+print("Reversed list is")
+print(A)
+
+
+Array Reverse Stack :
+def reverse_array_using_stack(arr):
+    stack = []
+    
+    # Push elements onto the stack
+    for element in arr:
+        stack.append(element)
+    
+    # Pop elements from the stack to reverse the array
+    for i in range(len(arr)):
+        arr[i] = stack.pop()
+
+# Example usage:
+arr = [1, 2, 3, 4, 5]
+reverse_array_using_stack(arr)
+print("Reversed Array:", arr)
+
+Push each element of the array onto a stack.
+Pop elements from the stack to form the reversed array.
+
+
+Time Complexity: O(n)
+Pushing and popping each element onto/from the stack requires linear time.
+Auxiliary Space Complexity: O(n)
+Additional space is used to store the stack.
+
+
